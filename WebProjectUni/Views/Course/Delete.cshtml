@@ -1,0 +1,23 @@
+﻿@model CourseModel
+@{
+    TempData["title"] = "Excluir curso";
+}
+
+<div class="container bg-dark p-5 rounded-5">
+    <div class="mb-5 text-center">
+        <h1 class="text-light">Exclusão de curso</h1>
+    </div>
+    <form method="post" asp-controller="Course" asp-action="Delete">
+        <input type="hidden" asp-for=Id />
+        <h2>Tem certeza que deseja excluir o registo abaixo??</h2>
+        <div class="mb-3">
+            <label for="Name" class="text-light form-label">Curso:</label>
+            <input type="text" asp-for="Name" class="form-control text-light" id="exampleInputName" placeholder="Nome do curso" disabled>
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+        <div class="d-flex gap-5 mt-5">
+            <button type="submit" class="w-50 btn btn-danger">Excluir</button>
+            <a class="w-50 btn btn-primary" asp-controller="Course" asp-action="Index">Voltar</a>
+        </div>
+    </form>
+</div>

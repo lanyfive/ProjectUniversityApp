@@ -1,0 +1,55 @@
+﻿@model IEnumerable<CourseModel>
+@{
+    ViewData["title"] = "Cursos";
+}
+
+<div class="container">
+
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <h1>Cursos</h1>
+        <a class="btn btn-success mx-2" asp-controller="Course" asp-action="Create"><i class="bi bi-file-earmark-plus"></i>Criar novo curso</a>
+    </div>
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success text-light" role="alert">
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger text-light" role="alert">
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+
+    <table id="Course" class="table table-light table-hover mt-5">
+        <br />
+        <thead>
+            <tr>
+                <th scope="col">Nome do Curso</th>
+                <th scope="col">Data de Criação</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (Model != null)
+            {
+                @foreach (var course in Model)
+                {
+                    <tr>
+                        <th scope="row">@course.Name</th>
+                        <th scope="row">@course.DataCriacao</th>
+                        <td>
+                            <a class="btn btn-warning mx-2" asp-controller="Course" asp-action="Update" asp-route-id="@course.Id"><i class="bi bi-pencil-square"></i>Editar</a>
+                            <a class="btn btn-danger mx-2" asp-controller="Course" asp-action="Delete" asp-route-id="@course.Id"><i class="bi bi-trash3-fill"></i>Excluir</a>
+                        </td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>

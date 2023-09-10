@@ -1,0 +1,25 @@
+﻿@model CourseModel
+@{
+    ViewData["title"] = "Alterar curso";
+}
+
+
+
+<div class="container bg-dark p-5 rounded-5">
+    <div class="mb-5 text-center">
+        <h1 class="text-light">Alteração de curso</h1>
+    </div>
+    <form method="post" asp-controller="Course" asp-action="Update">
+        <input type="hidden" asp-for=Id />
+        <div class="mb-3">
+            <label for="Name" class="form-label text-light">Curso:</label>
+            <input type="text" asp-for="Name" class="text-light form-control" id="exampleInputName" placeholder="Nome do curso">
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+        <div class="d-flex gap-5 mt-5">
+            <button type="submit" class="w-50 btn btn-success">Alterar</button>
+            <a class="w-50 btn btn-primary" asp-controller="Course" asp-action="Index">Voltar</a>
+        </div>
+    </form>
+</div>
+
